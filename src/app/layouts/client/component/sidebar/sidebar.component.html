@@ -1,0 +1,239 @@
+<div
+  class="h-screen w-full overflow-y-scroll flex flex-col space-y-5 px-5 pt-10"
+>
+  <div
+    class="mt-10 mb-8 mx-6 text-4xl font-extrabold tracking-tight leading-none"
+  >
+    MailInbox
+  </div>
+  <button
+    class="rounded-full text-white w-full py-2 bg-indigo-600"
+    (click)="openDialog()"
+  >
+    <span class="mat-button-wrapper flex justify-center items-center"
+      ><mat-icon
+        role="img"
+        class="mat-icon notranslate mat-icon-no-color"
+        aria-hidden="true"
+        ng-reflect-svg-icon="heroicons_outline:plus"
+        data-mat-icon-type="svg"
+        data-mat-icon-name="plus"
+        data-mat-icon-namespace="heroicons_outline"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          fit=""
+          height="100%"
+          width="100%"
+          preserveAspectRatio="xMidYMid meet"
+          focusable="false"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+          ></path></svg></mat-icon
+      ><span class="ml-2 text-sm">Nouveau Message</span></span
+    >
+  </button>
+
+  <div class="flex flex-col space-y-2">
+    <label class="text-indigo-600 text-xs font-semibold pl-2">MAILBOXES</label>
+    <div class="flex flex-col space-y-3 text-gray-500">
+      <div
+        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 focus:bg-red-700 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
+        [ngClass]="active == 1 ? 'active' : ''"
+        (click)="active = 1"
+      >
+        <div class="flex items-center space-x-2" routerLink="/gfdgf">
+          <mat-icon
+            role="img"
+            class="mat-icon notranslate fuse-vertical-navigation-item-icon mat-icon-no-color ng-star-inserted"
+            aria-hidden="true"
+            ng-reflect-svg-icon="heroicons_outline:inbox"
+            data-mat-icon-type="svg"
+            data-mat-icon-name="inbox"
+            data-mat-icon-namespace="heroicons_outline"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fit=""
+              height="100%"
+              width="100%"
+              preserveAspectRatio="xMidYMid meet"
+              focusable="false"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+              ></path></svg
+          ></mat-icon>
+          <span class="text-sm">Réceptions</span>
+        </div>
+        <span class="text-xs">27</span>
+      </div>
+
+      <div
+        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 focus:bg-red-700 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
+        [ngClass]="active == 2 ? 'active' : ''"
+        (click)="active = 2"
+      >
+        <div class="flex items-center space-x-2">
+          <mat-icon
+            role="img"
+            class="mat-icon notranslate fuse-vertical-navigation-item-icon mat-icon-no-color ng-star-inserted"
+            aria-hidden="true"
+            ng-reflect-svg-icon="heroicons_outline:paper-airpla"
+            data-mat-icon-type="svg"
+            data-mat-icon-name="paper-airplane"
+            data-mat-icon-namespace="heroicons_outline"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fit=""
+              height="100%"
+              width="100%"
+              preserveAspectRatio="xMidYMid meet"
+              focusable="false"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+              ></path></svg
+          ></mat-icon>
+          <span class="text-sm">Envoyés</span>
+        </div>
+        <span class="text-xs"></span>
+      </div>
+
+      <div
+        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 focus:bg-red-700 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
+        [ngClass]="active == 3 ? 'active' : ''"
+        (click)="active = 3"
+      >
+        <div class="flex items-center space-x-2">
+          <mat-icon
+            role="img"
+            class="mat-icon notranslate fuse-vertical-navigation-item-icon mat-icon-no-color ng-star-inserted"
+            aria-hidden="true"
+            ng-reflect-svg-icon="heroicons_outline:document"
+            data-mat-icon-type="svg"
+            data-mat-icon-name="document"
+            data-mat-icon-namespace="heroicons_outline"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fit=""
+              height="100%"
+              width="100%"
+              preserveAspectRatio="xMidYMid meet"
+              focusable="false"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              ></path></svg
+          ></mat-icon>
+          <span class="text-sm">Brouillons</span>
+        </div>
+        <span class="text-xs"></span>
+      </div>
+
+      <div
+        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 focus:bg-red-700 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
+        [ngClass]="active == 4 ? 'active' : ''"
+        (click)="active = 4"
+      >
+        <div class="flex items-center space-x-2">
+          <mat-icon
+            role="img"
+            class="mat-icon notranslate fuse-vertical-navigation-item-icon mat-icon-no-color ng-star-inserted"
+            aria-hidden="true"
+            ng-reflect-svg-icon="heroicons_outline:trash"
+            data-mat-icon-type="svg"
+            data-mat-icon-name="trash"
+            data-mat-icon-namespace="heroicons_outline"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fit=""
+              height="100%"
+              width="100%"
+              preserveAspectRatio="xMidYMid meet"
+              focusable="false"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+              ></path></svg
+          ></mat-icon>
+          <span class="text-sm">Corbeille</span>
+        </div>
+        <span class="text-xs"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col space-y-2">
+    <label class="text-indigo-400 uppercase text-xs font-semibold pl-2"
+      >Paramètres</label
+    >
+    <div class="flex flex-col space-y-3 text-gray-500">
+      <div
+        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 focus:bg-red-700 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
+        [ngClass]="active == 5 ? 'active' : ''"
+        (click)="active = 5"
+        routerLink="/profile"
+      >
+        <div class="flex items-center space-x-2" routerLink="/gfdgf">
+          <mat-icon
+            role="img"
+            class="mat-icon notranslate fuse-vertical-navigation-item-icon mat-icon-no-color ng-star-inserted"
+            aria-hidden="true"
+            ng-reflect-svg-icon="heroicons_outline:inbox"
+            data-mat-icon-type="svg"
+            data-mat-icon-name="inbox"
+            data-mat-icon-namespace="heroicons_outline"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fit=""
+              height="100%"
+              width="100%"
+              preserveAspectRatio="xMidYMid meet"
+              focusable="false"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path></svg
+          ></mat-icon>
+          <span class="text-sm">Mon Profile</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

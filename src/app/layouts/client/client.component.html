@@ -1,0 +1,24 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+  <mat-drawer-container class="flex-auto h-full">
+    <!-- Drawer -->
+    <mat-drawer
+      class="w-72 dark:bg-gray-900"
+      [mode]="'side'"
+      [opened]="open"
+      #drawer
+    >
+      <!-- Mailbox sidebar -->
+      <app-sidebar></app-sidebar>
+    </mat-drawer>
+
+    <!-- Drawer content -->
+    <mat-drawer-content class="flex flex-col overflow-hidden">
+      <!-- Main -->
+      <div class="w-full overflow-hidden">
+        <!-- <router-outlet></router-outlet> -->
+        <!-- <button (click)="open = !open">test</button> -->
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

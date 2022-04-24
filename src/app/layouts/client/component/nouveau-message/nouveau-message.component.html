@@ -1,0 +1,157 @@
+<div class="flex flex-col">
+  <div class="w-full py-5 px-10 bg-indigo-600 flex text-white justify-between">
+    <span class="">Noveau Message</span>
+    <button
+      mat-icon-button=""
+      class="mat-focus-indicator mat-icon-button mat-button-base"
+      tabindex="-1"
+    >
+      <span class="mat-button-wrapper"
+        ><mat-icon
+          role="img"
+          class="mat-icon notranslate text-current mat-icon-no-color"
+          aria-hidden="true"
+          ng-reflect-svg-icon="heroicons_outline:x"
+          data-mat-icon-type="svg"
+          data-mat-icon-name="x"
+          data-mat-icon-namespace="heroicons_outline"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            fit=""
+            height="100%"
+            width="100%"
+            preserveAspectRatio="xMidYMid meet"
+            focusable="false"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path></svg></mat-icon></span
+      ><span
+        matripple=""
+        class="mat-ripple mat-button-ripple mat-button-ripple-round"
+        ng-reflect-disabled="false"
+        ng-reflect-centered="true"
+        ng-reflect-trigger="[object HTMLButtonElement]"
+      ></span
+      ><span class="mat-button-focus-overlay"></span>
+    </button>
+  </div>
+  <div class="bg-white py-5 px-10 flex flex-col w-full space-y-2">
+    <div class="w-full flex flex-col space-y-1">
+      <label for="person">À</label>
+      <input
+        class="border border-indigo-400 outline px-3 py-2 h rounded-lg w-full"
+        id="person"
+        type="text"
+      />
+    </div>
+    <div class="w-full flex flex-col space-y-1">
+      <label for="object">Objet</label>
+      <input
+        class="border border-indigo-400 outline px-3 py-2 h rounded-lg w-full"
+        id="object"
+        type="text"
+      />
+    </div>
+    <div class="w-full flex flex-col space-y-1">
+      <label for="msg">Message</label>
+      <textarea
+        [(ngModel)]="msg"
+        class="border border-indigo-400 outline px-3 py-2 h rounded-lg w-full"
+        id="msg"
+        type="text"
+        rows="10"
+      >
+      </textarea>
+    </div>
+    <div class="flex flex-row justify-end space-x-1">
+      <span
+        class="flex flex-row space-x-1 items-center cursor-pointer hover:bg-gray-200 hover:text-indigo-600 text-black px-5 text-sm py-1 border rounded-full"
+      >
+        <!-- <span class="h-5 w-5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            fit=""
+            height="100%"
+            width="100%"
+            preserveAspectRatio="xMidYMid meet"
+            focusable="false"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            ></path></svg
+        ></span> -->
+        <span>Annuler</span></span
+      >
+      <span
+        class="flex flex-row space-x-1 items-center bg-indigo-200 cursor-pointer hover:bg-indigo-600 hover:text-white text-indigo-600 px-5 text-sm py-1 border rounded-full"
+      >
+        <!-- <span class="h-5 w-5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            fit=""
+            height="100%"
+            width="100%"
+            preserveAspectRatio="xMidYMid meet"
+            focusable="false"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            ></path></svg
+        ></span> -->
+        <span>Brouillon</span></span
+      >
+      <span
+        class="flex flex-row space-x-1 items-center bg-indigo-200 cursor-pointer hover:bg-indigo-600 hover:text-white text-indigo-600 px-5 text-sm py-1 border rounded-full"
+      >
+        <span>Envoyer</span>
+        <span class="h-5 w-5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            fit=""
+            height="100%"
+            width="100%"
+            preserveAspectRatio="xMidYMid meet"
+            focusable="false"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            ></path></svg
+        ></span>
+      </span>
+    </div>
+  </div>
+</div>
