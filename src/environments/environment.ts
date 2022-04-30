@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // server: 'http://192.168.149.185:3000',
+  // server: 'http://localhost:3000',
+
+  server: 'https://radiant-plains-24189.herokuapp.com/',
 };
 
 /*

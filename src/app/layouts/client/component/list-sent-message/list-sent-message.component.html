@@ -1,0 +1,128 @@
+<div class="">
+  <div
+    class="relative text-sm flex flex-0 items-center justify-between h-16 px-4 border-b bg-gray-50 dark:bg-transparent text-gray-700"
+  >
+    <div class="flex items-center">
+      <button
+        mat-icon-button=""
+        class="mat-focus-indicator mat-icon-button mat-button-base"
+      >
+        <span class="mat-button-wrapper" (click)="drawer()">
+          <mat-icon
+            role="img"
+            class="mat-icon notranslate mat-icon-no-color"
+            aria-hidden="true"
+            ng-reflect-svg-icon="heroicons_outline:menu"
+            data-mat-icon-type="svg"
+            data-mat-icon-name="menu"
+            data-mat-icon-namespace="heroicons_outline"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fit=""
+              height="100%"
+              width="100%"
+              preserveAspectRatio="xMidYMid meet"
+              focusable="false"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </mat-icon>
+        </span>
+        <span
+          matripple=""
+          class="mat-ripple mat-button-ripple mat-button-ripple-round"
+          ng-reflect-disabled="false"
+          ng-reflect-centered="true"
+          ng-reflect-trigger="[object HTMLButtonElement]"
+        ></span
+        ><span class="mat-button-focus-overlay"></span>
+      </button>
+      <div class="ml-2 font-semibold uppercase">Envois</div>
+    </div>
+    <div class="flex items-center">
+      <div class="flex items-center mr-3 text-md font-medium">
+        <span *ngIf="list.length == 0">{{ list.length }} Reçu</span>
+        <span *ngIf="list.length > 0">{{ list.length }} Reçus</span>
+      </div>
+    </div>
+  </div>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <div class="h-full overflow-y-scroll">
+    <a
+      *ngFor="let item of list"
+      [routerLink]="'/send'"
+      [queryParams]="{ id: item._id }"
+      (click)="viewMessage(item)"
+      class="relative hover:text-gray-800 cursor-pointer hover:bg-gray-100 text-sm flex border-t first:border-0 hover:bg-hover ng-star-inserted"
+    >
+      <div
+        class="flex flex-col items-start text-gray-500 justify-start w-full py-6 pr-4 pl-5 border-l-4 border-transparent"
+        [ngClass]="
+          item.is_read || item.destinataire._id !== id
+            ? ''
+            : 'border-indigo-600'
+        "
+      >
+        <div class="flex items-center w-full">
+          <div class="flex items-center">
+            <div
+              class="mr-2 truncate text-gray-700 text-lg"
+              [ngClass]="item.is_read ? '' : 'font-bold'"
+            >
+              {{ item?.destinataire?.prenom }} {{ item?.destinataire?.nom }}
+            </div>
+            <span
+              class="rounded-full border border-green-500 ml- bg-green-500 h-1.5 w-1.5"
+            ></span>
+          </div>
+          <!-- <mat-icon
+            role="img"
+            class="mat-icon notranslate mr-3 icon-size-4 text-red-500 dark:text-red-600 mat-icon-no-color ng-star-inserted"
+            aria-hidden="true"
+            ng-reflect-svg-icon="heroicons_solid:exclamation-ci"
+            data-mat-icon-type="svg"
+            data-mat-icon-name="exclamation-circle"
+            data-mat-icon-namespace="heroicons_solid"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              fit=""
+              height="100%"
+              width="100%"
+              preserveAspectRatio="xMidYMid meet"
+              focusable="false"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </mat-icon> -->
+          <div class="ml-auto text-xs text-right whitespace-nowrap text-hint">
+            {{ item.createdAt | date: "mediumDate" }}
+          </div>
+        </div>
+        <div class="flex items-center w-full mt-1">
+          <span class="leading-4 truncate text-gray-600">
+            Please review and sign the attached agreement
+          </span>
+        </div>
+        <div class="mt-2 leading-normal line-clamp-2 text-secondary">
+          {{ item.message }}
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

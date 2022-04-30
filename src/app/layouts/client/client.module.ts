@@ -11,9 +11,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 import { ProfileComponent } from './profile/profile.component';
 import { NouveauMessageComponent } from './component/nouveau-message/nouveau-message.component';
 import { FormsModule } from '@angular/forms';
+import { SendComponent } from './send/send.component';
+import { DraftComponent } from './draft/draft.component';
+import { TrashComponent } from './trash/trash.component';
+import { ListSentMessageComponent } from './component/list-sent-message/list-sent-message.component';
+import { DetailSentMessageComponent } from './component/detail-sent-message/detail-sent-message.component';
+import { NouveauSentMessageComponent } from './component/nouveau-sent-message/nouveau-sent-message.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +30,12 @@ import { FormsModule } from '@angular/forms';
     DetailMessageComponent,
     ProfileComponent,
     NouveauMessageComponent,
+    SendComponent,
+    DraftComponent,
+    TrashComponent,
+    ListSentMessageComponent,
+    DetailSentMessageComponent,
+    NouveauSentMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +46,7 @@ import { FormsModule } from '@angular/forms';
     MatRippleModule,
     MatFormFieldModule,
     FormsModule,
+    MatAutocompleteModule,
   ],
 })
 export class ClientModule {}

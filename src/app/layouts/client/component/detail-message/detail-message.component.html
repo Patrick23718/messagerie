@@ -1,12 +1,50 @@
-<div></div>
+<div
+  *ngIf="message === ''"
+  class="w-full h-full flex flex-col justify-center items-center text-gray-400"
+>
+  <span class="text-red-700">
+    <svg
+      width="100"
+      height="100"
+      viewBox="0 0 32 32"
+      x="0"
+      y="2744"
+      fit=""
+      preserveAspectRatio="xMidYMid meet"
+      focusable="false"
+      stroke="#9ca3af"
+      fill="#9ca3af"
+    >
+      <path
+        d="M15.467 24.267h-14.933c-0.294 0-0.533-0.24-0.533-0.533v-12.933c0-4.337 3.588-7.867 8-7.867s8 3.529 8 7.867v12.933c0 0.293-0.239 0.533-0.533 0.533zM1.067 23.2h13.867v-12.4c0-3.749-3.11-6.8-6.933-6.8s-6.933 3.050-6.933 6.8v12.4z"
+      ></path>
+      <path
+        d="M31.467 24.267h-16.533c-0.294 0-0.533-0.24-0.533-0.533s0.239-0.533 0.533-0.533h16v-12.4c0-3.686-3.211-6.8-7.012-6.8h-15.388c-0.294 0-0.533-0.239-0.533-0.533s0.239-0.533 0.533-0.533h15.388c4.379 0 8.079 3.602 8.079 7.867v12.933c0 0.293-0.24 0.533-0.533 0.533z"
+      ></path>
+      <path
+        d="M29.333 15.733h-3.2c-0.293 0-0.533-0.239-0.533-0.533v-5.333c0-0.294 0.24-0.533 0.533-0.533h3.2c0.293 0 0.533 0.239 0.533 0.533v5.333c0 0.294-0.24 0.533-0.533 0.533zM26.667 14.667h2.133v-4.267h-2.133v4.267z"
+      ></path>
+      <path
+        d="M26.667 10.4h-7.467c-0.293 0-0.533-0.239-0.533-0.533s0.24-0.533 0.533-0.533h7.467c0.293 0 0.533 0.239 0.533 0.533s-0.24 0.533-0.533 0.533z"
+      ></path>
+      <path
+        d="M11.733 21.067h-7.467c-0.294 0-0.533-0.24-0.533-0.533s0.239-0.533 0.533-0.533h7.467c0.294 0 0.533 0.24 0.533 0.533s-0.239 0.533-0.533 0.533z"
+      ></path>
+      <path
+        d="M19.733 29.067c-0.293 0-0.533-0.24-0.533-0.533v-4.267h-5.333v4.267c0 0.293-0.239 0.533-0.533 0.533s-0.533-0.24-0.533-0.533v-4.8c0-0.293 0.239-0.533 0.533-0.533h6.4c0.293 0 0.533 0.24 0.533 0.533v4.8c0 0.293-0.24 0.533-0.533 0.533z"
+      ></path>
+    </svg>
+  </span>
+  <span class="text-xl">Selectionnez un mail pour le lire.</span>
+</div>
 
-<div class="max-h-screen overflow-y-scroll">
+<div class="max-h-screen overflow-y-scroll" *ngIf="message !== ''">
   <div
     class="relative text-sm flex flex-0 items-center justify-between h-16 px-4 border-b bg-gray-50 dark:bg-transparent text-gray-700"
   >
     <div class="flex items-center">
       <div class="ml-2 font-semibold uppercase">
-        Lorem ipsum dolor sit amet.
+        {{ msg?.objet }}
       </div>
     </div>
     <div class="flex items-center">
@@ -54,7 +92,7 @@
       </button>
     </div>
   </div>
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 
   <mat-menu #menu="matMenu">
     <button mat-menu-item>
@@ -121,10 +159,7 @@
   </mat-menu>
 
   <div class="flex flex-wrap flex-col items-cente py-5 px-6 bg-white m">
-    <div class="flex flex-auto my-1 mr-4 text-lg">
-      Duis minim quis in labore voluptate laboris do consequat eu anim sit
-      deserunt incididunt
-    </div>
+    <div class="flex flex-auto my-1 mr-4 text-lg"></div>
     <div
       class="flex flex-wrap items-center justify-start -mx-1 ng-star-inserted"
     >
@@ -132,23 +167,37 @@
         class="m-1 py-0.5 px-2.5 rounded-full text-sm font-medium whitespace-nowrap text-blue-800 bg-blue-100 ng-star-inserted"
         ng-reflect-ng-class="text-blue-800 bg-blue-100"
       >
-        Personal
+        personnel
       </div>
     </div>
   </div>
 
   <div class="flex flex-col bg-white m-4 rounded-lg overflow-hidden">
     <div class="flex flex-row items-center space-x-3 pl-10 pt-5">
-      <img class="rounded-full w-12 h-12" src="assets/female-01.jpg" alt="" />
-      <div class="flex flex-col space-y-2">
-        <span class="text-sm font-semibold text-gray-700">Deann Hansen</span>
+      <img
+        class="rounded-full w-12 h-12"
+        [src]="
+          msg.expediteur.imageURL
+            ? server + '/' + msg.expediteur.imageURL
+            : 'assets/female-01.jpg'
+        "
+        alt=""
+      />
+      <div class="flex flex-col space-y-">
+        <span class="text-sm font-semibold text-gray-700"
+          >{{ msg?.expediteur?.prenom }} {{ msg?.expediteur?.nom }}</span
+        >
+        <span class="text-gray-400 text-xs">{{
+          msg.createdAt | date: "full"
+        }}</span>
       </div>
     </div>
 
     <div
       class="flex mt-8 whitespace-pre-line text-sm h-full leading-relaxed overflow-y-scroll px-10"
     >
-      Dear Brian,<br /><br />
+      {{ msg.message }}
+      <!-- Dear Brian,<br /><br />
       Pariatur ipsum ipsum aute dolore ipsum ea mollit labore duis tempor
       aliquip et reprehenderit. Pariatur amet esse minim ad esse aute excepteur
       in. Quis eu laborum dolore ullamco ipsum incididunt fugiat non laborum
@@ -166,10 +215,11 @@
       sint nulla veniam ex ut dolor. Fugiat do ad proident tempor. Id ipsum ex
       elit id quis laboris ut irure nulla minim reprehenderit minim dolor sunt.
       Anim nisi cupidatat sint minim fugiat sit sit cupidatat laborum excepteur
-      duis exercitation anim commodo.<br /><br />Best Regards, Deann Hansen
+      duis exercitation anim commodo.<br /><br />Best Regards, Deann Hansen -->
     </div>
     <div class="border-t bg-gray-50 flex mt-5 px-10 py-5 space-x-5">
       <span
+        (click)="openDialog()"
         class="flex flex-row items-center space-x-3 cursor-pointer hover:bg-indigo-600 hover:text-white text-indigo-600 px-7 text-sm py-3 border rounded-full"
       >
         <span class="h-5 w-5">

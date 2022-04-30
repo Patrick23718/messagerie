@@ -1,0 +1,49 @@
+<div class="w-screen h-screen grid grid-cols-1 md:grid-cols-2">
+  <div class="bg-indigo-600 h-full w-full hidden md:block"></div>
+  <div class="bg-white h-full w-full text-gray-600">
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    <div class="flex items-center justify-center w-full h-full">
+      <div class="flex flex-col space-y-3 w-2/3">
+        <div class="text-3xl text-center font-bold text-indigo-400">
+          Se Connecter
+        </div>
+        <div class="text-sm text-gray-400 text-center">
+          Entrez vos identifiants pour profiter d'une meilleur experience
+        </div>
+        <div class="flex flex-col space-y-1">
+          <label class="font-light" for="email">Email</label>
+          <input
+            type="email"
+            [(ngModel)]="email"
+            name=""
+            class="border font-light border-indigo-400 outline px-3 py-2 h rounded-lg w-full"
+            id="email"
+          />
+        </div>
+        <div class="flex flex-col space-y-1">
+          <label class="font-light" for="pass">Mot de passe</label>
+          <input
+            type="password"
+            [(ngModel)]="password"
+            name=""
+            class="border font-light border-indigo-400 outline px-3 py-2 h rounded-lg w-full"
+            id="pass"
+          />
+        </div>
+        <div class="text-xs font-light">
+          <span>Mot de passe oublié?</span>&nbsp;<span
+            class="text-indigo-300 cursor-pointer hover:underline"
+            >Veuillez contactez l'administrateur</span
+          >
+        </div>
+        <div class="flex justify-end">
+          <span
+            class="flex flex-row space-x-3 items-center bg-indigo-200 cursor-pointer hover:bg-indigo-600 hover:text-white text-indigo-600 px-7 text-sm py-3 border rounded-full"
+            (click)="connexion()"
+            >Connexion</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

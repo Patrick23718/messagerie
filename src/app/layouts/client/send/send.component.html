@@ -1,0 +1,11 @@
+<div class="flex w-full">
+  <div class="w-1/3 h-screen bg-white border-r overflow-x-scroll">
+    <app-list-sent-message
+      (messageId)="getidmessage($event)"
+      (unread)="navigation($event)"
+    ></app-list-sent-message>
+  </div>
+  <div class="w-2/3 bg-gray-200">
+    <app-detail-sent-message [message]="messageId"></app-detail-sent-message>
+  </div>
+</div>

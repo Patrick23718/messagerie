@@ -1,0 +1,203 @@
+<div
+  *ngIf="message === ''"
+  class="w-full h-full flex flex-col justify-center items-center text-gray-400"
+>
+  <span class="text-red-700">
+    <svg
+      width="100"
+      height="100"
+      viewBox="0 0 32 32"
+      x="0"
+      y="2744"
+      fit=""
+      preserveAspectRatio="xMidYMid meet"
+      focusable="false"
+      stroke="#9ca3af"
+      fill="#9ca3af"
+    >
+      <path
+        d="M15.467 24.267h-14.933c-0.294 0-0.533-0.24-0.533-0.533v-12.933c0-4.337 3.588-7.867 8-7.867s8 3.529 8 7.867v12.933c0 0.293-0.239 0.533-0.533 0.533zM1.067 23.2h13.867v-12.4c0-3.749-3.11-6.8-6.933-6.8s-6.933 3.050-6.933 6.8v12.4z"
+      ></path>
+      <path
+        d="M31.467 24.267h-16.533c-0.294 0-0.533-0.24-0.533-0.533s0.239-0.533 0.533-0.533h16v-12.4c0-3.686-3.211-6.8-7.012-6.8h-15.388c-0.294 0-0.533-0.239-0.533-0.533s0.239-0.533 0.533-0.533h15.388c4.379 0 8.079 3.602 8.079 7.867v12.933c0 0.293-0.24 0.533-0.533 0.533z"
+      ></path>
+      <path
+        d="M29.333 15.733h-3.2c-0.293 0-0.533-0.239-0.533-0.533v-5.333c0-0.294 0.24-0.533 0.533-0.533h3.2c0.293 0 0.533 0.239 0.533 0.533v5.333c0 0.294-0.24 0.533-0.533 0.533zM26.667 14.667h2.133v-4.267h-2.133v4.267z"
+      ></path>
+      <path
+        d="M26.667 10.4h-7.467c-0.293 0-0.533-0.239-0.533-0.533s0.24-0.533 0.533-0.533h7.467c0.293 0 0.533 0.239 0.533 0.533s-0.24 0.533-0.533 0.533z"
+      ></path>
+      <path
+        d="M11.733 21.067h-7.467c-0.294 0-0.533-0.24-0.533-0.533s0.239-0.533 0.533-0.533h7.467c0.294 0 0.533 0.24 0.533 0.533s-0.239 0.533-0.533 0.533z"
+      ></path>
+      <path
+        d="M19.733 29.067c-0.293 0-0.533-0.24-0.533-0.533v-4.267h-5.333v4.267c0 0.293-0.239 0.533-0.533 0.533s-0.533-0.24-0.533-0.533v-4.8c0-0.293 0.239-0.533 0.533-0.533h6.4c0.293 0 0.533 0.24 0.533 0.533v4.8c0 0.293-0.24 0.533-0.533 0.533z"
+      ></path>
+    </svg>
+  </span>
+  <span class="text-xl">Selectionnez un mail pour le lire.</span>
+</div>
+
+<div class="max-h-screen overflow-y-scroll" *ngIf="message !== ''">
+  <div
+    class="relative text-sm flex flex-0 items-center justify-between h-16 px-4 border-b bg-gray-50 dark:bg-transparent text-gray-700"
+  >
+    <div class="flex items-center">
+      <div class="ml-2 font-semibold uppercase">
+        {{ msg?.objet }}
+      </div>
+    </div>
+    <div class="flex items-center">
+      <button
+        aria-haspopup="true"
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        class="mat-focus-indicator mat-menu-trigger ml-2 mat-icon-button mat-button-base"
+        ng-reflect-menu="[object Object]"
+      >
+        <span class="mat-button-wrapper"
+          ><mat-icon
+            role="img"
+            class="mat-icon notranslate mat-icon-no-color"
+            aria-hidden="true"
+            ng-reflect-svg-icon="heroicons_outline:dots-vertica"
+            data-mat-icon-type="svg"
+            data-mat-icon-name="dots-vertical"
+            data-mat-icon-namespace="heroicons_outline"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fit=""
+              height="100%"
+              width="100%"
+              preserveAspectRatio="xMidYMid meet"
+              focusable="false"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+              ></path></svg></mat-icon></span
+        ><span
+          matripple=""
+          class="mat-ripple mat-button-ripple mat-button-ripple-round"
+          ng-reflect-disabled="false"
+          ng-reflect-centered="true"
+          ng-reflect-trigger="[object HTMLButtonElement]"
+        ></span
+        ><span class="mat-button-focus-overlay"></span>
+      </button>
+    </div>
+  </div>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon
+        role="img"
+        class="mat-icon notranslate mat-icon-no-color"
+        aria-hidden="true"
+        ng-reflect-svg-icon="heroicons_outline:trash"
+        data-mat-icon-type="svg"
+        data-mat-icon-name="trash"
+        data-mat-icon-namespace="heroicons_outline"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          fit=""
+          height="100%"
+          width="100%"
+          preserveAspectRatio="xMidYMid meet"
+          focusable="false"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+          ></path>
+        </svg>
+      </mat-icon>
+      <span>Marquez comme important</span>
+    </button>
+
+    <button mat-menu-item>
+      <mat-icon
+        role="img"
+        class="mat-icon notranslate mat-icon-no-color"
+        aria-hidden="true"
+        ng-reflect-svg-icon="heroicons_outline:trash"
+        data-mat-icon-type="svg"
+        data-mat-icon-name="trash"
+        data-mat-icon-namespace="heroicons_outline"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          fit=""
+          height="100%"
+          width="100%"
+          preserveAspectRatio="xMidYMid meet"
+          focusable="false"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+          ></path></svg
+      ></mat-icon>
+      <span>Mettre dans la corbeille</span>
+    </button>
+  </mat-menu>
+
+  <div class="flex flex-wrap flex-col items-cente py-5 px-6 bg-white m">
+    <div class="flex flex-auto my-1 mr-4 text-lg"></div>
+    <div
+      class="flex flex-wrap items-center justify-start -mx-1 ng-star-inserted"
+    >
+      <div
+        class="m-1 py-0.5 px-2.5 rounded-full text-sm font-medium whitespace-nowrap text-blue-800 bg-blue-100 ng-star-inserted"
+        ng-reflect-ng-class="text-blue-800 bg-blue-100"
+      >
+        personnel
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col bg-white m-4 rounded-lg overflow-hidden">
+    <div class="flex flex-row items-center space-x-3 pl-10 pt-5">
+      <img
+        class="rounded-full w-12 h-12"
+        [src]="
+          msg.destinataire.imageURL
+            ? server + '/' + msg.destinataire.imageURL
+            : 'assets/female-01.jpg'
+        "
+        alt=""
+      />
+      <div class="flex flex-col space-y-">
+        <span class="text-sm font-semibold text-gray-700"
+          >{{ msg?.destinataire?.prenom }} {{ msg?.destinataire?.nom }}</span
+        >
+        <span class="text-gray-400 text-xs">{{
+          msg.createdAt | date: "fullDate"
+        }}</span>
+      </div>
+    </div>
+
+    <div
+      class="flex mt-8 whitespace-pre-line text-sm h-full leading-relaxed overflow-y-scroll px-10"
+    >
+      {{ msg.message }}
+    </div>
+    <div class="border-t bg-gray-50 flex mt-5 px-10 py-5 space-x-5"></div>
+  </div>
+</div>

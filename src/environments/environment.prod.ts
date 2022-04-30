@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  server: 'https://radiant-plains-24189.herokuapp.com/',
 };

@@ -44,11 +44,13 @@
     <label class="text-indigo-600 text-xs font-semibold pl-2">MAILBOXES</label>
     <div class="flex flex-col space-y-3 text-gray-500">
       <div
-        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 focus:bg-red-700 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
-        [ngClass]="active == 1 ? 'active' : ''"
-        (click)="active = 1"
+        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
+        [ngClass]="active == 'inbox' ? 'active' : ''"
+        (click)="active = 'inbox'"
+        routerLink="/inbox"
+        [queryParams]="{ page: 'inbox' }"
       >
-        <div class="flex items-center space-x-2" routerLink="/gfdgf">
+        <div class="flex items-center space-x-2">
           <mat-icon
             role="img"
             class="mat-icon notranslate fuse-vertical-navigation-item-icon mat-icon-no-color ng-star-inserted"
@@ -77,13 +79,15 @@
           ></mat-icon>
           <span class="text-sm">Réceptions</span>
         </div>
-        <span class="text-xs">27</span>
+        <span class="text-xs" *ngIf="count > 0">{{ count }}</span>
       </div>
 
       <div
-        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 focus:bg-red-700 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
-        [ngClass]="active == 2 ? 'active' : ''"
-        (click)="active = 2"
+        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
+        [ngClass]="active == 'send' ? 'active' : ''"
+        routerLink="/send"
+        [queryParams]="{ page: 'send' }"
+        (click)="active = 'send'"
       >
         <div class="flex items-center space-x-2">
           <mat-icon
@@ -117,10 +121,12 @@
         <span class="text-xs"></span>
       </div>
 
-      <div
-        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 focus:bg-red-700 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
-        [ngClass]="active == 3 ? 'active' : ''"
-        (click)="active = 3"
+      <!-- <div
+        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
+        [ngClass]="active == 'Draft' ? 'active' : ''"
+        [routerLink]="'/send'"
+        [queryParams]="{ page: 'Draft' }"
+        (click)="active = 'Draft'"
       >
         <div class="flex items-center space-x-2">
           <mat-icon
@@ -152,12 +158,14 @@
           <span class="text-sm">Brouillons</span>
         </div>
         <span class="text-xs"></span>
-      </div>
+      </div> -->
 
       <div
-        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 focus:bg-red-700 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
-        [ngClass]="active == 4 ? 'active' : ''"
-        (click)="active = 4"
+        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
+        [ngClass]="active == 'Delete' ? 'active' : ''"
+        [routerLink]="'/inbox'"
+        [queryParams]="{ page: 'Delete' }"
+        (click)="active = 'Delete'"
       >
         <div class="flex items-center space-x-2">
           <mat-icon
@@ -199,10 +207,11 @@
     >
     <div class="flex flex-col space-y-3 text-gray-500">
       <div
-        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 focus:bg-red-700 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
-        [ngClass]="active == 5 ? 'active' : ''"
-        (click)="active = 5"
+        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
+        [ngClass]="active == 'reglage' ? 'active' : ''"
         routerLink="/profile"
+        [queryParams]="{ page: 'reglage' }"
+        (click)="active = 'reglage'"
       >
         <div class="flex items-center space-x-2" routerLink="/gfdgf">
           <mat-icon
@@ -232,6 +241,42 @@
               ></path></svg
           ></mat-icon>
           <span class="text-sm">Mon Profile</span>
+        </div>
+      </div>
+      <div
+        class="flex items-center space-x- justify-between rounded-lg px-4 py-2 hover:text-gray-800 cursor-pointer hover:bg-gray-100"
+        [ngClass]="active == 'dec' ? 'active' : ''"
+        (click)="active = 'dec'"
+        (click)="logout()"
+      >
+        <div class="flex items-center space-x-2">
+          <mat-icon
+            role="img"
+            class="mat-icon notranslate fuse-vertical-navigation-item-icon mat-icon-no-color ng-star-inserted"
+            aria-hidden="true"
+            ng-reflect-svg-icon="heroicons_outline:inbox"
+            data-mat-icon-type="svg"
+            data-mat-icon-name="inbox"
+            data-mat-icon-namespace="heroicons_outline"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fit=""
+              height="100%"
+              width="100%"
+              preserveAspectRatio="xMidYMid meet"
+              focusable="false"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path></svg
+          ></mat-icon>
+          <span class="text-sm">Se Déconnecter</span>
         </div>
       </div>
     </div>

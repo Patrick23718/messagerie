@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MailComponent implements OnInit {
   open = true;
-  empty = true;
+  messageId = '';
 
   constructor() {}
 
@@ -15,5 +15,9 @@ export class MailComponent implements OnInit {
 
   navigation(event: any) {
     console.log(event);
+  }
+
+  getidmessage(event: any) {
+    this.messageId = event;
   }
 }

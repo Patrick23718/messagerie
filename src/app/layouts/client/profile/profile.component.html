@@ -3,7 +3,7 @@
     <div class="absolute -bottom-20 left-1/3 right-1/4">
       <img
         class="w-44 h-44 rounded-full border-4 border-white"
-        src="assets/female-01.jpg"
+        [src]="image ? server + '/' + image : 'assets/female-01.jpg'"
         alt=""
       />
     </div>
@@ -13,7 +13,7 @@
     <div class="mt-24 mb-5 font-semibold text-xl md:text-3xl">
       Informations Personnelles
     </div>
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
     <div
       class="px-5 py-10 bg-white rounded-xl flex flex-col space-y-3 text-gray-600"
     >
@@ -25,24 +25,27 @@
             class="border border-indigo-400 outline px-3 py-2 h rounded-lg w-full"
             type="text"
             id="nom"
+            [(ngModel)]="nom"
             placeholder="Entrez votre nom"
           />
         </div>
         <div class="flex flex-col col-span-3">
-          <label class="pl-1" for="nom">Prénom</label>
+          <label class="pl-1" for="prenom">Prénom</label>
           <input
             class="border border-indigo-400 outline px-3 py-2 h rounded-lg w-full"
             type="text"
-            id="nom"
+            id="prenom"
+            [(ngModel)]="prenom"
             placeholder="Entrez votre prénom"
           />
         </div>
         <div class="flex flex-col col-span-2">
-          <label class="pl-1" for="nom">Date de naissance</label>
+          <label class="pl-1" for="num">Numero de telephone</label>
           <input
             class="border border-indigo-400 outline px-3 py-2 h rounded-lg w-full"
-            type="date"
-            id="nom"
+            type="text"
+            [(ngModel)]="numero"
+            id="num"
             placeholder="Entrez votre Date de naissance"
           />
         </div>
@@ -54,13 +57,14 @@
             id="nom"
             readonly
             placeholder="Entrez votre Email"
-            value="test@test.com"
+            [(ngModel)]="email"
           />
         </div>
       </div>
       <div class="flex justify-end items-center">
         <span
           class="flex flex-row space-x-3 items-center bg-indigo-200 cursor-pointer hover:bg-indigo-600 hover:text-white text-indigo-600 px-7 text-sm py-3 border rounded-full"
+          (click)="updateInfo()"
         >
           <span class="h-5 w-5">
             <svg
@@ -94,7 +98,7 @@
     <div class="mb-5 font-semibold text-3xl">
       Informations sur la photo de profile
     </div>
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar *ngIf="loading1" mode="indeterminate"></mat-progress-bar>
     <div
       class="px-5 py-10 bg-white rounded-xl flex flex-col space-y-3 text-gray-600"
     >
@@ -105,16 +109,22 @@
         <div class="flex justify-center items-center">
           <img
             class="w-full md:w-2/3"
-            src="assets/female-01.jpg"
+            [src]="image ? server + '/' + image : 'assets/female-01.jpg'"
             alt=""
             srcset=""
           />
         </div>
         <div>
-          <input class="" type="file" name="" id="" />
+          <input
+            (change)="profileImage($event)"
+            class="custom-file-input"
+            type="file"
+            name=""
+            id=""
+          />
         </div>
       </div>
-      <div class="flex justify-end items-center">
+      <!-- <div class="flex justify-end items-center">
         <span
           class="flex flex-row space-x-3 items-center bg-indigo-200 cursor-pointer hover:bg-indigo-600 hover:text-white text-indigo-600 px-7 text-sm py-3 border rounded-full"
         >
@@ -142,7 +152,7 @@
           ></span>
           <span>Enregistrer</span></span
         >
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -150,7 +160,7 @@
     <div class="mb-5 font-semibold text-xl md:text-3xl">
       Gestion du mot de passe
     </div>
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar *ngIf="loading2" mode="indeterminate"></mat-progress-bar>
     <div
       class="px-5 py-10 bg-white rounded-xl flex flex-col space-y-3 text-gray-600"
     >
@@ -162,6 +172,7 @@
             class="border border-indigo-400 outline px-3 py-2 h rounded-lg w-full"
             type="password"
             id="Apwd"
+            [(ngModel)]="Apwd"
             placeholder="Ancien Mot de Passe"
           />
         </div>
@@ -170,6 +181,7 @@
           <input
             class="border border-indigo-400 outline px-3 py-2 h rounded-lg w-full"
             type="text"
+            [(ngModel)]="pwd"
             id="Npwd"
             placeholder="Nouveau mot de passe"
           />
@@ -180,6 +192,7 @@
             class="border border-indigo-400 outline px-3 py-2 h rounded-lg w-full"
             type="password"
             id="cpwd"
+            [(ngModel)]="cpwd"
             placeholder="Confirmez votre mot de passe"
           />
         </div>
@@ -187,6 +200,7 @@
       <div class="flex items-center">
         <span
           class="flex flex-row space-x-3 items-center bg-indigo-200 cursor-pointer hover:bg-indigo-600 hover:text-white text-indigo-600 px-7 text-sm py-3 border rounded-full"
+          (click)="changepwd()"
         >
           <span class="h-5 w-5">
             <svg
